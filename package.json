@@ -50,7 +50,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest --watch"
+    "test:local": "jest --watch",
+    "test:remote": "jest"
   },
   "repository": {
     "type": "git",
