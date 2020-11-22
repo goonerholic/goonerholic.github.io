@@ -3,7 +3,7 @@
 import { jsx, css } from '@emotion/react';
 import { Link } from 'gatsby';
 import openColor from 'open-color';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface HeaderProps {
   title: string;
@@ -15,7 +15,7 @@ interface HeaderProps {
 
 const style = css`
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 4rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -23,8 +23,14 @@ const style = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: ${openColor.blue[9]};
   color: #ffffff;
+  z-index: 1000;
+  background-color: ${openColor.blue[9]};
+
+  &.scrolled {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: background-color 0.4s;
+  }
 
   .header-logo {
     color: inherit;
@@ -50,16 +56,7 @@ const style = css`
     }
 
     .header-nav-list {
-      background-color: ${openColor.blue[6]};
-      position: absolute;
-      right: 0.2rem;
-      top: 5.4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      visibility: hidden;
-      border-radius: 0.6rem;
+      display: none;
 
       li {
         padding: 1rem 1rem;
@@ -70,7 +67,15 @@ const style = css`
       }
 
       &.active {
-        visibility: visible;
+        display: flex;
+        background-color: ${openColor.blue[6]};
+        position: absolute;
+        right: 0.2rem;
+        top: 5.4rem;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 0.6rem;
       }
     }
   }
@@ -88,7 +93,7 @@ const style = css`
       list-style: none;
 
       .header-nav-list-item {
-        margin-left: 1rem;
+        margin-left: 2rem;
       }
     }
   }
@@ -96,13 +101,33 @@ const style = css`
 
 export default function Header({ title, navItems }: HeaderProps) {
   const [visible, setVisible] = useState(false);
+  const header = useRef<HTMLElement>(null);
 
   const onClick = () => {
     setVisible(!visible);
   };
 
+  const handleScroll = () => {
+    if (!header.current) return;
+    if (window.scrollY > 0) {
+      header.current.classList.add('scrolled');
+    } else {
+      header.current.classList.remove('scrolled');
+    }
+  };
+
+  useEffect(() => {
+    if (header.current) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header css={style}>
+    <header css={style} ref={header}>
       <div className="header-logo">
         <Link to="/">{title}</Link>
       </div>

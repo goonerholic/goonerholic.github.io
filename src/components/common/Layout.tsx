@@ -20,24 +20,29 @@ const style = css`
   h1 {
     font-size: 3rem;
     font-weight: bold;
+    margin-bottom: 2rem;
   }
 
   h2 {
     font-size: 2.4rem;
     font-weight: bold;
+    margin-bottom: 1.6rem;
   }
 
   h3 {
     font-size: 2rem;
     font-weight: bold;
+    margin-bottom: 1.6rem;
   }
 
   h4 {
     font-size: 1.8rem;
+    margin-bottom: 1.6rem;
   }
 
   h5 {
     font-size: 1.6rem;
+    margin-bottom: 1.6rem;
   }
 
   p {

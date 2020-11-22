@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
-import OpenColor from 'open-color';
 import { ReactNode } from 'react';
 
 interface ContentWrapperProps {
