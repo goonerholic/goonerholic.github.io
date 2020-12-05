@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { Link } from 'gatsby';
+import OpenColor from 'open-color';
 import placeholder from '../../images/placeholder.png';
 
 interface PostPreviewProps {
@@ -8,7 +10,6 @@ interface PostPreviewProps {
 
 const style = css`
   padding: 4rem 0;
-  background-color: #fcfcfc;
 
   .grid-container {
     display: grid;
@@ -38,6 +39,13 @@ const style = css`
         transform: translateY(-0.4rem);
       }
     }
+  }
+
+  .align-right {
+    text-align: right;
+    font-size: 1.6rem;
+    color: ${OpenColor.blue[9]};
+    padding-top: 2rem;
   }
 `;
 
@@ -88,15 +96,10 @@ export default function PostPreview({ posts }: PostPreviewProps) {
             <p>Post preview........</p>
           </div>
         </div>
-        <div className="post">
-          <img src={placeholder} />
-          <div>
-            <h4>Title</h4>
-            <p>Post preview........</p>
-          </div>
-        </div>
       </div>
-      <a href="/blog">All posts</a>
+      <div className="align-right">
+        <Link to="/blog">Go to blog</Link>
+      </div>
     </div>
   );
 }
