@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import ContentWrapper from '../components/common/ContentWrapper';
-import Header from '../components/common/Header';
 import Layout from '../components/common/Layout';
+import Header from '../components/common/Header';
+import ContentWrapper from '../components/common/ContentWrapper';
 import AboutPreview from '../components/home/AboutPreview';
 import PostPreview from '../components/home/PostPreview';
 import aboutPreviewImage from '../images/about-preview.jpg';

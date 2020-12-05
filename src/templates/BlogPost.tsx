@@ -1,4 +1,5 @@
 /** @jsx jsx */
+<<<<<<< HEAD
 import { jsx, css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import { PostQuery } from '../../gatsby-graphql';
@@ -54,3 +55,17 @@ export const postQuery = graphql`
     }
   }
 `;
+=======
+import { css, jsx } from '@emotion/react';
+import { BlogIndexQuery } from '../../gatsby-graphql';
+
+interface Props {
+  data: BlogIndexQuery;
+}
+
+const BlogPost = ({ data }: Props) => {
+  return <div></div>;
+};
+
+export default BlogPost;
+>>>>>>> configure plugins
