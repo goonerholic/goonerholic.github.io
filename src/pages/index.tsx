@@ -7,7 +7,6 @@ import PostPreview from '../components/home/PostPreview';
 import aboutPreviewImage from '../images/about-preview.jpg';
 import { graphql } from 'gatsby';
 import { PostPreviewQuery } from '../../gatsby-graphql';
-import PostList from '../components/blog/PostList';
 
 interface Props {
   data: PostPreviewQuery;
@@ -23,7 +22,7 @@ export default function index({ data }: Props): ReactElement {
           img={aboutPreviewImage}
           description="Hello world!"
         />
-        <PostList posts={data} />
+        <PostPreview posts={data} />
       </ContentWrapper>
     </Layout>
   );
