@@ -1877,25 +1877,15 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-<<<<<<< HEAD
-=======
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
->>>>>>> configure plugins
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
-<<<<<<< HEAD
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-=======
->>>>>>> configure plugins
 };
 
 
@@ -2325,25 +2315,15 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
-<<<<<<< HEAD
-=======
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
->>>>>>> configure plugins
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
-<<<<<<< HEAD
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-=======
->>>>>>> configure plugins
 };
 
 export type SitePageConnection = {
@@ -2372,10 +2352,7 @@ export type SitePageContext = {
   skip?: Maybe<Scalars['Int']>;
   numPages?: Maybe<Scalars['Int']>;
   currentPage?: Maybe<Scalars['Int']>;
-<<<<<<< HEAD
   id?: Maybe<Scalars['String']>;
-=======
->>>>>>> configure plugins
 };
 
 export type SitePageContextFilterInput = {
@@ -2383,10 +2360,7 @@ export type SitePageContextFilterInput = {
   skip?: Maybe<IntQueryOperatorInput>;
   numPages?: Maybe<IntQueryOperatorInput>;
   currentPage?: Maybe<IntQueryOperatorInput>;
-<<<<<<< HEAD
   id?: Maybe<StringQueryOperatorInput>;
-=======
->>>>>>> configure plugins
 };
 
 export type SitePageEdge = {
@@ -2401,104 +2375,12 @@ export type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
-<<<<<<< HEAD
-=======
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
->>>>>>> configure plugins
   | 'isCreatedByStatefulCreatePages'
   | 'context___limit'
   | 'context___skip'
   | 'context___numPages'
   | 'context___currentPage'
-<<<<<<< HEAD
   | 'context___id'
-=======
->>>>>>> configure plugins
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -2580,7 +2462,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___peerDependencies___version'
   | 'pluginCreator___packageJson___keywords'
   | 'pluginCreatorId'
-<<<<<<< HEAD
   | 'componentPath'
   | 'id'
   | 'parent___id'
@@ -2668,9 +2549,6 @@ export type SitePageFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type';
-=======
-  | 'componentPath';
->>>>>>> configure plugins
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -2678,25 +2556,15 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-<<<<<<< HEAD
-=======
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
->>>>>>> configure plugins
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
-<<<<<<< HEAD
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-=======
->>>>>>> configure plugins
 };
 
 export type SitePageGroupConnection = {
@@ -3107,7 +2975,6 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
-<<<<<<< HEAD
 export type PostPreviewQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3121,8 +2988,6 @@ export type PostListQueryVariables = Exact<{
 
 export type PostListQuery = { allMdx: { edges: Array<{ node: { frontmatter?: Maybe<Pick<MdxFrontmatter, 'date' | 'title' | 'slug' | 'excerpt'>> } }> } };
 
-=======
->>>>>>> configure plugins
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;

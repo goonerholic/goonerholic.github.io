@@ -1,8 +1,7 @@
 /** @jsx jsx */
-<<<<<<< HEAD
 import { jsx, css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import { PostQuery } from '../../gatsby-graphql';
+// import { PostQuery } from '../../gatsby-graphql';
 import { Post } from '../components/blog/PostList';
 import ContentWrapper from '../components/common/ContentWrapper';
 import Header from '../components/common/Header';
@@ -11,7 +10,7 @@ import { MDXRenderer, MDXRendererProps } from 'gatsby-plugin-mdx';
 import { ReactNode } from 'react';
 
 interface BlogPostProps {
-  data: PostQuery;
+  data: any;
 }
 
 const style = css`
@@ -55,17 +54,3 @@ export const postQuery = graphql`
     }
   }
 `;
-=======
-import { css, jsx } from '@emotion/react';
-import { BlogIndexQuery } from '../../gatsby-graphql';
-
-interface Props {
-  data: BlogIndexQuery;
-}
-
-const BlogPost = ({ data }: Props) => {
-  return <div></div>;
-};
-
-export default BlogPost;
->>>>>>> configure plugins
