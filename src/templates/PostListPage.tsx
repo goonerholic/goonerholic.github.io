@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import { useMemo } from 'react';
 import { PostListQuery } from '../../gatsby-graphql';
+import PostList from '../components/blog/PostList';
 import PostListItem from '../components/blog/PostListItem';
 import ContentWrapper from '../components/common/ContentWrapper';
 import Header from '../components/common/Header';
@@ -40,25 +41,7 @@ export default function PostListPage({ pageContext, data }: PostListProps) {
     <Layout>
       <Header />
       <ContentWrapper>
-        <div className="grid-container">
-          {data.allMdx.edges
-            .filter((edge) => edge.node.frontmatter)
-            .map(({ node }) => {
-              const { title, excerpt, image } = node.frontmatter as {
-                title: string;
-                excerpt: string;
-                image: string;
-              };
-              return (
-                <PostListItem
-                  key={title}
-                  title={title}
-                  excerpt={excerpt.substring(0, 20)}
-                  image={image}
-                />
-              );
-            })}
-        </div>
+        <PostList posts={data} />
       </ContentWrapper>
     </Layout>
   );
