@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/react';
 
 interface AboutPreviewProps {
   img: string;
+  title: string;
   description: string;
 }
 
@@ -28,14 +29,18 @@ const style = css`
   }
 `;
 
-export default function AboutPreview({ img, description }: AboutPreviewProps) {
+export default function AboutPreview({
+  img,
+  title,
+  description,
+}: AboutPreviewProps) {
   return (
     <div css={style}>
       <div className="container grid-container">
         <img src={img} />
         <div className="description">
-          <h3>About myself</h3>
-          <p>Genius programmer</p>
+          <h3>{title}</h3>
+          <p>{description}</p>
         </div>
       </div>
     </div>
