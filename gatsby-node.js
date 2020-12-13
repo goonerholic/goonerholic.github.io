@@ -21,8 +21,6 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `);
 
-  console.log(data.allMdx.edges);
-
   // blog pages
   const postPerPage = 5;
   const numPages = Math.ceil(data.allMdx.edges.length / postPerPage);
@@ -40,13 +38,13 @@ exports.createPages = async function ({ actions, graphql }) {
   });
 
   // single post
-  // data.allMdx.edges.forEach((edge) => {
-  //   const { slug } = edge.node.frontmatter.slug;
-  //   const { id } = edge.node;
-  //   actions.createPage({
-  //     path: slug,
-  //     component: require.resolve('./src/templates/BlogPost.tsx'),
-  //     context: id,
-  //   });
-  // });
+  data.allMdx.edges.forEach((edge) => {
+    const { slug } = edge.node.frontmatter;
+    const { id } = edge.node;
+    actions.createPage({
+      path: slug,
+      component: require.resolve('./src/templates/BlogPost.tsx'),
+      context: { id },
+    });
+  });
 };

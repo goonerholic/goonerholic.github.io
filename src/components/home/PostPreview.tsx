@@ -33,7 +33,7 @@ export default function PostPreview({ posts }: PostPreviewProps) {
       <h2>Recent Posts</h2>
       <PostList posts={posts} />
       <div className="align-right">
-        <Link to="/blog">Go to blog</Link>
+        <Link to="/posts">See more posts</Link>
       </div>
     </div>
   );

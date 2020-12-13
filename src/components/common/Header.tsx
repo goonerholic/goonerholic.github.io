@@ -12,9 +12,9 @@ const style = css`
   top: 0;
   left: 0;
 
-  color: #000000;
+  color: #ffffff;
   z-index: 1000;
-  background-color: transparent;
+  background-color: ${openColor.blue[9]};
   transition: background-color 0.4s;
 
   .container {
@@ -28,10 +28,7 @@ const style = css`
   }
 
   &.scrolled {
-    background-color: ${openColor.blue[9]};
-    color: #ffffff;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: background-color 0.4s;
   }
 
   .header-logo {
@@ -132,7 +129,7 @@ export default function Header() {
     <header css={style} ref={header}>
       <div className="container">
         <div className="header-logo">
-          <Link to="/">My blog</Link>
+          <Link to="/">노가다 윤씨</Link>
         </div>
         <nav className="header-nav">
           <button className="header-nav-toggle-btn" onClick={onClick}>
