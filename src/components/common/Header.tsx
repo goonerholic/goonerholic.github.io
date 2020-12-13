@@ -5,30 +5,32 @@ import { Link } from 'gatsby';
 import openColor from 'open-color';
 import { useEffect, useRef, useState } from 'react';
 
-interface HeaderProps {
-  title: string;
-  navItems: {
-    navItem: string;
-    link: string;
-  }[];
-}
-
 const style = css`
   width: 100%;
-  padding: 1rem 4rem;
+  padding: 1.5rem 1rem;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: #ffffff;
+
+  color: #000000;
   z-index: 1000;
-  background-color: ${openColor.blue[9]};
+  background-color: transparent;
+  transition: background-color 0.4s;
+
+  .container {
+    max-width: 993px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &.scrolled {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: ${openColor.blue[9]};
+    color: #ffffff;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
     transition: background-color 0.4s;
   }
 
@@ -70,7 +72,7 @@ const style = css`
         display: flex;
         background-color: ${openColor.blue[6]};
         position: absolute;
-        right: 0.2rem;
+        right: 1rem;
         top: 5.4rem;
         flex-direction: column;
         justify-content: space-around;
@@ -99,7 +101,7 @@ const style = css`
   }
 `;
 
-export default function Header({ title, navItems }: HeaderProps) {
+export default function Header() {
   const [visible, setVisible] = useState(false);
   const header = useRef<HTMLElement>(null);
 
@@ -128,21 +130,27 @@ export default function Header({ title, navItems }: HeaderProps) {
 
   return (
     <header css={style} ref={header}>
-      <div className="header-logo">
-        <Link to="/">{title}</Link>
-      </div>
-      <nav className="header-nav">
-        <button className="header-nav-toggle-btn" onClick={onClick}>
-          ☰
-        </button>
-        <ul className={`header-nav-list${visible ? ' active' : ''}`}>
-          {navItems.map((item, index) => (
-            <li key={index} className="header-nav-list-item">
-              <Link to={item.link}>{item.navItem}</Link>
+      <div className="container">
+        <div className="header-logo">
+          <Link to="/">My blog</Link>
+        </div>
+        <nav className="header-nav">
+          <button className="header-nav-toggle-btn" onClick={onClick}>
+            ☰
+          </button>
+          <ul className={`header-nav-list${visible ? ' active' : ''}`}>
+            <li className="header-nav-list-item">
+              <Link to={'/'}>Home</Link>
             </li>
-          ))}
-        </ul>
-      </nav>
+            <li className="header-nav-list-item">
+              <Link to={'/about'}>About</Link>
+            </li>
+            <li className="header-nav-list-item">
+              <Link to={'/posts'}>Posts</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }
