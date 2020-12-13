@@ -3,28 +3,36 @@
 import { jsx, css } from '@emotion/react';
 import { Link } from 'gatsby';
 import openColor from 'open-color';
-import { useState } from 'react';
-
-interface HeaderProps {
-  title: string;
-  navItems: {
-    navItem: string;
-    link: string;
-  }[];
-}
+import { useEffect, useRef, useState } from 'react';
 
 const style = css`
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1.5rem 1rem;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: ${openColor.blue[9]};
-  color: #ffffff;
+
+  color: #000000;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.4s;
+
+  .container {
+    max-width: 993px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.scrolled {
+    background-color: ${openColor.blue[9]};
+    color: #ffffff;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: background-color 0.4s;
+  }
 
   .header-logo {
     color: inherit;
@@ -50,16 +58,7 @@ const style = css`
     }
 
     .header-nav-list {
-      background-color: ${openColor.blue[6]};
-      position: absolute;
-      right: 0.2rem;
-      top: 5.4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      visibility: hidden;
-      border-radius: 0.6rem;
+      display: none;
 
       li {
         padding: 1rem 1rem;
@@ -70,7 +69,15 @@ const style = css`
       }
 
       &.active {
-        visibility: visible;
+        display: flex;
+        background-color: ${openColor.blue[6]};
+        position: absolute;
+        right: 1rem;
+        top: 5.4rem;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 0.6rem;
       }
     }
   }
@@ -88,36 +95,62 @@ const style = css`
       list-style: none;
 
       .header-nav-list-item {
-        margin-left: 1rem;
+        margin-left: 2rem;
       }
     }
   }
 `;
 
-export default function Header({ title, navItems }: HeaderProps) {
+export default function Header() {
   const [visible, setVisible] = useState(false);
+  const header = useRef<HTMLElement>(null);
 
   const onClick = () => {
     setVisible(!visible);
   };
 
+  const handleScroll = () => {
+    if (!header.current) return;
+    if (window.scrollY > 0) {
+      header.current.classList.add('scrolled');
+    } else {
+      header.current.classList.remove('scrolled');
+    }
+  };
+
+  useEffect(() => {
+    if (header.current) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header css={style}>
-      <div className="header-logo">
-        <Link to="/">{title}</Link>
-      </div>
-      <nav className="header-nav">
-        <button className="header-nav-toggle-btn" onClick={onClick}>
-          ☰
-        </button>
-        <ul className={`header-nav-list${visible ? ' active' : ''}`}>
-          {navItems.map((item, index) => (
-            <li key={index} className="header-nav-list-item">
-              <Link to={item.link}>{item.navItem}</Link>
+    <header css={style} ref={header}>
+      <div className="container">
+        <div className="header-logo">
+          <Link to="/">My blog</Link>
+        </div>
+        <nav className="header-nav">
+          <button className="header-nav-toggle-btn" onClick={onClick}>
+            ☰
+          </button>
+          <ul className={`header-nav-list${visible ? ' active' : ''}`}>
+            <li className="header-nav-list-item">
+              <Link to={'/'}>Home</Link>
             </li>
-          ))}
-        </ul>
-      </nav>
+            <li className="header-nav-list-item">
+              <Link to={'/about'}>About</Link>
+            </li>
+            <li className="header-nav-list-item">
+              <Link to={'/posts'}>Posts</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import { PostQuery } from '../../gatsby-graphql';
+// import { PostQuery } from '../../gatsby-graphql';
 import { Post } from '../components/blog/PostList';
 import ContentWrapper from '../components/common/ContentWrapper';
 import Header from '../components/common/Header';
@@ -10,7 +10,7 @@ import { MDXRenderer, MDXRendererProps } from 'gatsby-plugin-mdx';
 import { ReactNode } from 'react';
 
 interface BlogPostProps {
-  data: PostQuery;
+  data: any;
 }
 
 const style = css`
