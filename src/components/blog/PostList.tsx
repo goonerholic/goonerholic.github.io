@@ -8,6 +8,7 @@ export interface Post {
   date: string;
   excerpt: string;
   image: string;
+  slug: string;
 }
 
 interface PostListProps {
@@ -25,17 +26,14 @@ export default function PostList({ posts }: PostListProps) {
   return (
     <div css={style}>
       {posts.allMdx.edges.map(({ node }) => {
-        const { title, excerpt, image } = node.frontmatter as {
-          title: string;
-          excerpt: string;
-          image: string;
-        };
+        const { title, excerpt, image, slug } = node.frontmatter as Post;
         return (
           <PostListItem
             key={title}
             title={title}
             excerpt={excerpt.substring(0, 20)}
             image={image}
+            slug={slug}
           />
         );
       })}

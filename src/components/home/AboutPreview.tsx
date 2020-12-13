@@ -18,7 +18,7 @@ const style = css`
     width: 100%;
     height: auto;
     border-radius: 1rem;
-    box-shadow: 0 0 8px 4px #dadada;
+    /* box-shadow: 0 0 8px 4px #dadada; */
   }
 
   @media only screen and (max-width: 767px) {

@@ -3,9 +3,7 @@ import { jsx, css } from '@emotion/react';
 import { Link } from 'gatsby';
 import OpenColor from 'open-color';
 import { PostPreviewQuery } from '../../../gatsby-graphql';
-import placeholder from '../../images/placeholder.png';
 import PostList from '../blog/PostList';
-import PostListItem from '../blog/PostListItem';
 
 interface PostPreviewProps {
   posts: PostPreviewQuery;
@@ -35,7 +33,7 @@ export default function PostPreview({ posts }: PostPreviewProps) {
       <h2>Recent Posts</h2>
       <PostList posts={posts} />
       <div className="align-right">
-        <Link to="/blog">Go to blog</Link>
+        <Link to="/posts">See more posts</Link>
       </div>
     </div>
   );
