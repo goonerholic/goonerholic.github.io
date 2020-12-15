@@ -18,7 +18,7 @@ const style = css`
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 4.8rem;
     font-weight: bold;
     margin-bottom: 2rem;
   }

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
 import { Link } from 'gatsby';
+import OpenColor from 'open-color';
 import placeholder from '../../images/placeholder.png';
 
 interface PostListItemProps {
@@ -23,6 +24,8 @@ const style = css`
     z-index: -100;
     border-radius: 0.5rem 0.5rem 0 0;
     padding: 0.5rem;
+    object-fit: cover;
+    border: 1px solid ${OpenColor.gray[3]};
   }
 
   div {

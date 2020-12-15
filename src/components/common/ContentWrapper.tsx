@@ -3,15 +3,19 @@ import { jsx, css } from '@emotion/react';
 import { ReactNode } from 'react';
 
 interface ContentWrapperProps {
+  width?: number;
   children: ReactNode;
 }
 
-const style = css`
+const style = (width: number) => css`
   padding: 10rem 1rem;
-  max-width: 993px;
+  max-width: ${width}px;
   margin: 0 auto;
 `;
 
-export default function ContentWrapper({ children }: ContentWrapperProps) {
-  return <div css={style}>{children}</div>;
+export default function ContentWrapper({
+  width = 993,
+  children,
+}: ContentWrapperProps) {
+  return <div css={style(width)}>{children}</div>;
 }

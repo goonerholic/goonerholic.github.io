@@ -12,10 +12,10 @@ const style = css`
   top: 0;
   left: 0;
 
-  color: #ffffff;
   z-index: 1000;
-  background-color: ${openColor.blue[9]};
+  background-color: ${openColor.gray[9]};
   transition: background-color 0.4s;
+  color: #ffffff;
 
   .container {
     max-width: 993px;
@@ -25,6 +25,7 @@ const style = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1rem;
   }
 
   &.scrolled {
@@ -139,9 +140,9 @@ export default function Header() {
             <li className="header-nav-list-item">
               <Link to={'/'}>Home</Link>
             </li>
-            <li className="header-nav-list-item">
+            {/* <li className="header-nav-list-item">
               <Link to={'/about'}>About</Link>
-            </li>
+            </li> */}
             <li className="header-nav-list-item">
               <Link to={'/posts'}>Posts</Link>
             </li>
