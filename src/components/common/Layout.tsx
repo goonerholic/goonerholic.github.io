@@ -7,6 +7,8 @@ interface LayoutProps {
 }
 
 const style = css`
+  /* @import '../../../language-tabs.css'; */
+
   html {
     font-size: 10px;
   }
@@ -24,35 +26,42 @@ const style = css`
   }
 
   h2 {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     font-weight: bold;
     margin-bottom: 1.6rem;
   }
 
   h3 {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: bold;
     margin-bottom: 1.6rem;
   }
 
   h4 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin-bottom: 1.6rem;
   }
 
   h5 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-bottom: 1.6rem;
   }
 
   p {
     font-size: 1.6rem;
+    font-weight: 200;
   }
 
   a {
     font-size: inherit;
     text-decoration: none;
     color: inherit;
+  }
+
+  @media only screen and (max-width: 425px) {
+    h1 {
+      font-size: 3rem;
+    }
   }
 `;
 

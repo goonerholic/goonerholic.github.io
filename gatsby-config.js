@@ -46,6 +46,9 @@ module.exports = {
           {
             family: `Noto Sans KR`,
           },
+          {
+            family: `Inconsolata`,
+          },
         ],
       },
     },
