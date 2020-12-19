@@ -6,25 +6,107 @@ import { Post } from '../components/blog/PostList';
 import ContentWrapper from '../components/common/ContentWrapper';
 import Header from '../components/common/Header';
 import Layout from '../components/common/Layout';
+import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Code from '../components/common/Code';
+import { preToCodeBlock } from 'mdx-utils';
 
 interface BlogPostProps {
   data: PostQuery;
 }
 
 const style = css`
+  @media only screen and (max-width: 425px) {
+    p {
+      font-size: 1.6rem;
+    }
+  }
+
   .date {
     font-size: 1.4rem;
   }
 
   .post-body {
     padding: 4rem 0;
-    font-size: 2rem;
+
+    p {
+      font-size: 1.8rem;
+      font-weight: 200;
+      line-height: 1.6;
+    }
+
     pre {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      line-height: 1.6;
+      font-family: 'Inconsolata';
+      overflow-x: scroll;
+    }
+
+    .gatsby-highlight {
+      position: relative;
+      border-radius: 0.5rem;
+      padding: 1rem 1rem;
+      -webkit-overflow-scrolling: touch;
+      margin: 2rem 0;
+    }
+    .gatsby-highlight pre[class*='language-'] {
+      -webkit-overflow-scrolling: touch;
+    }
+    .gatsby-highlight pre[class*='language-']:before {
+      background: black;
+      border-radius: 0 0 0.25rem 0.25rem;
+      color: white;
+      font-size: 1.8rem;
+      letter-spacing: 0.025rem;
+      padding: 0.1rem 0.5rem;
+      position: absolute;
+      right: 1rem;
+      text-align: right;
+      text-transform: uppercase;
+      top: 0;
+    }
+
+    .gatsby-highlight pre[class='language-javascript']:before {
+      content: 'js';
+      background: #f7df1e;
+      color: black;
+    }
+
+    .gatsby-highlight pre[class*='language-js']:before {
+      content: 'js';
+      background: #f7df1e;
+      color: black;
+    }
+
+    .gatsby-highlight pre[class*='language-ts']:before {
+      content: 'ts';
+      background: #3178c6;
+      color: white;
+    }
+
+    .gatsby-highlight pre[class='language-html']:before {
+      content: 'html';
+      background: #005a9c;
+      color: white;
+    }
+
+    .gatsby-highlight pre[class='language-css']:before {
+      content: 'css';
+      background: #ff9800;
+      color: white;
     }
   }
 `;
+
+const components = {
+  pre: (preProps: any) => {
+    const props = preToCodeBlock(preProps);
+    if (props) {
+      return <Code {...props} />;
+    }
+    return <pre {...preProps} />;
+  },
+};
 
 export default function BlogPost({ data }: BlogPostProps) {
   const { title, date } = data.mdx?.frontmatter as Post;
@@ -36,7 +118,9 @@ export default function BlogPost({ data }: BlogPostProps) {
           <h1>{title}</h1>
           <span className="date">{new Date(date).toLocaleString()}</span>
           <div className="post-body">
-            <MDXRenderer>{data.mdx?.body as string}</MDXRenderer>
+            <MDXProvider components={components}>
+              <MDXRenderer>{data.mdx?.body as string}</MDXRenderer>
+            </MDXProvider>
           </div>
         </div>
       </ContentWrapper>
