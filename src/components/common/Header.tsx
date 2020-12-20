@@ -130,7 +130,7 @@ export default function Header() {
     <header css={style} ref={header}>
       <div className="container">
         <div className="header-logo">
-          <Link to="/">노가다 윤씨</Link>
+          <Link to="/">코딩하는 보통인부</Link>
         </div>
         <nav className="header-nav">
           <button className="header-nav-toggle-btn" onClick={onClick}>

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "@emotion/react": "^11.1.1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
@@ -21,6 +22,7 @@
     "gatsby-remark-images": "^3.7.0",
     "gatsby-source-filesystem": "^2.4.2",
     "gatsby-transformer-sharp": "^2.5.21",
+    "gh-pages": "^3.1.0",
     "mdx-utils": "^0.2.0",
     "open-color": "^1.7.0",
     "prism-react-renderer": "^1.1.1",
@@ -63,7 +65,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test:local": "jest --watch",
-    "test:remote": "jest"
+    "test:remote": "jest",
+    "deploy": "gatsby build && gh-pages -d public -b master"
   },
   "repository": {
     "type": "git",

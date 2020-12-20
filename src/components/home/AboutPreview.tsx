@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { ReactNode } from 'react';
 
 interface AboutPreviewProps {
   img: string;
   title: string;
-  description: string;
+  children: ReactNode;
 }
 
 const style = css`
@@ -14,7 +15,7 @@ const style = css`
     column-gap: 4rem;
   }
 
-  img {
+  .main-image {
     width: 100%;
     height: auto;
     border-radius: 1rem;
@@ -32,15 +33,15 @@ const style = css`
 export default function AboutPreview({
   img,
   title,
-  description,
+  children,
 }: AboutPreviewProps) {
   return (
     <div css={style}>
       <div className="container grid-container">
-        <img src={img} />
+        <img className="main-image" src={img} />
         <div className="description">
           <h3>{title}</h3>
-          <p>{description}</p>
+          {children}
         </div>
       </div>
     </div>

@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { jsx } from '@emotion/react';
 import { graphql } from 'gatsby';
 import { PostListQuery } from '../../gatsby-graphql';
 import PostList from '../components/blog/PostList';
 import ContentWrapper from '../components/common/ContentWrapper';
 import Header from '../components/common/Header';
 import Layout from '../components/common/Layout';
+import Seo from '../components/common/Seo';
 
 interface PostListProps {
   pageContext: {
@@ -19,9 +20,10 @@ interface PostListProps {
 
 // const style = css``;
 
-export default function PostListPage({ pageContext, data }: PostListProps) {
+export default function PostListPage({ data }: PostListProps) {
   return (
     <Layout>
+      <Seo title="Posts" />
       <Header />
       <ContentWrapper>
         <PostList posts={data} />

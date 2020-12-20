@@ -4,13 +4,16 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOProps {
-  description: string;
-  lang: string;
-  meta: { name: string; content: any } | { property: string; content: any };
   title: string;
+  description?: string;
+  meta?: (
+    | { name: string; content: any; property?: undefined }
+    | { property: string; content: any; name?: undefined }
+  )[];
+  article?: boolean;
 }
 
-function Seo({ description, lang, meta, title }: SEOProps) {
+function Seo({ description, meta, title, article }: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,9 +33,6 @@ function Seo({ description, lang, meta, title }: SEOProps) {
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
@@ -50,7 +50,7 @@ function Seo({ description, lang, meta, title }: SEOProps) {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: article ? `article` : `website`,
         },
         {
           name: `twitter:card`,
@@ -68,7 +68,7 @@ function Seo({ description, lang, meta, title }: SEOProps) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat(meta ? meta : [])}
     />
   );
 }

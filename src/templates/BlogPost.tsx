@@ -10,6 +10,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Code from '../components/common/Code';
 import { preToCodeBlock } from 'mdx-utils';
+import Seo from '../components/common/Seo';
 
 interface BlogPostProps {
   data: PostQuery;
@@ -112,6 +113,7 @@ export default function BlogPost({ data }: BlogPostProps) {
   const { title, date } = data.mdx?.frontmatter as Post;
   return (
     <Layout>
+      <Seo title={title} />
       <Header />
       <ContentWrapper width={800}>
         <div css={style}>
