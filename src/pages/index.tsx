@@ -21,7 +21,7 @@ export default function index({ data }: Props): ReactElement {
       <Seo title="Home" />
       <Header />
       <ContentWrapper>
-        <AboutPreview title="코딩하는 보통인부" img={aboutPreviewImage}>
+        <AboutPreview img={aboutPreviewImage}>
           <AboutMe
             github="https://github.com/goonerholic"
             email="goonerholic@gmail.com"

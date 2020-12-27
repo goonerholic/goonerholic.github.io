@@ -4,7 +4,6 @@ import { ReactNode } from 'react';
 
 interface AboutPreviewProps {
   img: string;
-  title: string;
   children: ReactNode;
 }
 
@@ -30,19 +29,12 @@ const style = css`
   }
 `;
 
-export default function AboutPreview({
-  img,
-  title,
-  children,
-}: AboutPreviewProps) {
+export default function AboutPreview({ img, children }: AboutPreviewProps) {
   return (
     <div css={style}>
       <div className="container grid-container">
         <img className="main-image" src={img} />
-        <div className="description">
-          <h3>{title}</h3>
-          {children}
-        </div>
+        <div className="description">{children}</div>
       </div>
     </div>
   );

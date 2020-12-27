@@ -1,9 +1,11 @@
 /** @jsx jsx */
 // import { jsx, css } from '@emotion/core';
 import { jsx, css } from '@emotion/react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import openColor from 'open-color';
 import { useEffect, useRef, useState } from 'react';
+import { MenuOutlined } from '@ant-design/icons';
+import { boxShadow } from '../../utils/styleFragments';
 
 const style = css`
   width: 100%;
@@ -58,24 +60,26 @@ const style = css`
     .header-nav-list {
       display: none;
 
-      li {
-        padding: 1rem 1rem;
-
-        & + & {
-          border-top: 1px solid grey;
-        }
-      }
-
       &.active {
         display: flex;
-        background-color: ${openColor.blue[6]};
+        background-color: ${openColor.gray[7]};
         position: absolute;
         right: 1rem;
-        top: 5.4rem;
+        top: 6.4rem;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         border-radius: 0.6rem;
+        ${boxShadow};
+
+        li {
+          padding: 2rem 2rem;
+          margin: 0 1rem;
+
+          &:not(:last-child) {
+            border-bottom: 1px solid ${openColor.gray[6]};
+          }
+        }
       }
     }
   }
@@ -100,6 +104,18 @@ const style = css`
 `;
 
 export default function Header() {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `,
+  );
+
   const [visible, setVisible] = useState(false);
   const header = useRef<HTMLElement>(null);
 
@@ -130,11 +146,11 @@ export default function Header() {
     <header css={style} ref={header}>
       <div className="container">
         <div className="header-logo">
-          <Link to="/">코딩하는 보통인부</Link>
+          <Link to="/">{site.siteMetadata.title}</Link>
         </div>
         <nav className="header-nav">
           <button className="header-nav-toggle-btn" onClick={onClick}>
-            ☰
+            <MenuOutlined />
           </button>
           <ul className={`header-nav-list${visible ? ' active' : ''}`}>
             <li className="header-nav-list-item">

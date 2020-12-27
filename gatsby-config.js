@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `개발하는 보통인부`,
+    title: `보통인부`,
     description: `보통인부 with frontend dev`,
     author: `보통인부`,
   },
@@ -22,6 +22,14 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
