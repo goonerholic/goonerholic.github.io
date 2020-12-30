@@ -67,7 +67,7 @@
     "clean": "gatsby clean",
     "test:local": "jest --watch",
     "test:remote": "jest",
-    "deploy": "gatsby build && gh-pages -d public -b master"
+    "deploy": "gatsby build && gh-pages -d public -r https://github.com/goonerholic/goonerholic.github.io.git -b master"
   },
   "repository": {
     "type": "git",

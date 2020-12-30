@@ -1,17 +1,35 @@
-name: Gatsby Publish
+name: Deploy
 
 on:
   push:
-    branches:
-      - master
+    branches: ['master']
+  pull_request:
+    branches: ['master']
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
         with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-repo: https://github.com/goonerholic/goonerholic.github.io.git
-          deploy-branch: master
+          node-version: 14.x
+
+      - name: Cache node modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: 'client/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: Run Test
+        run: yarn test:remote
+
+      - name: Deploy
+        run: yarn deploy

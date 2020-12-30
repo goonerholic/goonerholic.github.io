@@ -22,7 +22,7 @@ exports.createPages = async function ({ actions, graphql }) {
   `);
 
   // blog pages
-  const postPerPage = 5;
+  const postPerPage = 8;
   const numPages = Math.ceil(data.allMdx.edges.length / postPerPage);
   Array.from({ length: numPages }).forEach((_, index) => {
     actions.createPage({

@@ -4,7 +4,7 @@ import Header from '../components/common/Header';
 import ContentWrapper from '../components/common/ContentWrapper';
 import AboutPreview from '../components/home/AboutPreview';
 import PostPreview from '../components/home/PostPreview';
-import aboutPreviewImage from '../images/about-preview.jpg';
+import mainImage from '../images/main-image.jpg';
 import { graphql } from 'gatsby';
 import { PostPreviewQuery } from '../../gatsby-graphql';
 import Seo from '../components/common/Seo';
@@ -20,7 +20,7 @@ export default function index({ data }: Props): ReactElement {
       <Seo title="Home" />
       <Header />
       <ContentWrapper>
-        <AboutPreview img={aboutPreviewImage}>
+        <AboutPreview img={mainImage}>
           <AboutMe github="https://github.com/goonerholic" />
         </AboutPreview>
         <PostPreview posts={data} />
