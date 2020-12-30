@@ -1,33 +1,27 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
 import { GithubOutlined, MailOutlined } from '@ant-design/icons';
-import NodeJS from '../../images/svg/nodejs.inline.svg';
-import OpenColor from 'open-color';
+import TechBadge from '../common/TechBadge';
 
 interface AboutMeProps {
   github: string;
   email: string;
 }
 
-const languageColor: { [key: string]: string } = {
-  nodejs: '#339933',
-  javascript: '#F7DF1E',
-  typescript: '#3178C6',
-  html5: '#E34F26',
-  css3: '#1572B6',
-  react: '#61DAFB',
-  redux: '#764ABC',
-  aws: '#232F3E',
-};
+const techStack = [
+  'NodeJS',
+  'TypeScript',
+  'JavaScript',
+  'HTML5',
+  'CSS3',
+  'React',
+  'Redux',
+  'AWS',
+];
 
 const style = css`
-  .badge {
-    height: 4rem;
-    padding: 1rem 1rem;
-
-    svg {
-      fill: white;
-    }
+  .tech-badges {
+    padding: 2rem 0;
   }
 
   ul {
@@ -37,6 +31,7 @@ const style = css`
       .anticon {
         margin-right: 1rem;
       }
+      padding: 1rem 0;
     }
   }
 `;
@@ -46,7 +41,14 @@ export default function AboutMe({ github, email }: AboutMeProps) {
     <div css={style}>
       <h3>코딩하는 노가다 윤씨</h3>
       <p>🛠️ 이런 연장들을 약간 다룰줄 압니다.</p>
-      <div></div>
+      <div className="tech-badges">
+        {techStack.map((stack) => {
+          const language = stack.toLowerCase();
+          return (
+            <TechBadge language={language} displayText={stack} key={language} />
+          );
+        })}
+      </div>
       <ul>
         {github && (
           <li>
