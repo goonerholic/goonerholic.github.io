@@ -5,7 +5,6 @@ import ContentWrapper from '../components/common/ContentWrapper';
 import AboutPreview from '../components/home/AboutPreview';
 import PostPreview from '../components/home/PostPreview';
 import aboutPreviewImage from '../images/about-preview.jpg';
-import githubIcon from '../images/GitHub-Mark-32px.png';
 import { graphql } from 'gatsby';
 import { PostPreviewQuery } from '../../gatsby-graphql';
 import Seo from '../components/common/Seo';
@@ -22,10 +21,7 @@ export default function index({ data }: Props): ReactElement {
       <Header />
       <ContentWrapper>
         <AboutPreview img={aboutPreviewImage}>
-          <AboutMe
-            github="https://github.com/goonerholic"
-            email="goonerholic@gmail.com"
-          />
+          <AboutMe github="https://github.com/goonerholic" />
         </AboutPreview>
         <PostPreview posts={data} />
       </ContentWrapper>

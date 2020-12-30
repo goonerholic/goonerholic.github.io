@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
-import { GithubOutlined, MailOutlined } from '@ant-design/icons';
+import { GithubOutlined } from '@ant-design/icons';
 import TechBadge from '../common/TechBadge';
 
 interface AboutMeProps {
   github: string;
-  email: string;
 }
 
 const techStack = [
@@ -36,7 +35,7 @@ const style = css`
   }
 `;
 
-export default function AboutMe({ github, email }: AboutMeProps) {
+export default function AboutMe({ github }: AboutMeProps) {
   return (
     <div css={style}>
       <h3>코딩하는 노가다 윤씨</h3>
@@ -54,12 +53,6 @@ export default function AboutMe({ github, email }: AboutMeProps) {
           <li>
             <GithubOutlined />
             <a href={github}>{github}</a>
-          </li>
-        )}
-        {email && (
-          <li>
-            <MailOutlined />
-            <a href={`mailto:${email}`}>{email}</a>
           </li>
         )}
       </ul>
