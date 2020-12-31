@@ -25,7 +25,7 @@ const style = css`
 
   ul {
     font-size: 1.8rem;
-
+    padding: 0;
     li {
       .anticon {
         margin-right: 1rem;
@@ -39,15 +39,6 @@ export default function AboutMe({ github }: AboutMeProps) {
   return (
     <div css={style}>
       <h3>코딩하는 노가다 윤씨</h3>
-      <p>🛠️ 이런 연장들을 약간 다룰줄 압니다.</p>
-      <div className="tech-badges">
-        {techStack.map((stack) => {
-          const language = stack.toLowerCase();
-          return (
-            <TechBadge language={language} displayText={stack} key={language} />
-          );
-        })}
-      </div>
       <ul>
         {github && (
           <li>
@@ -56,6 +47,15 @@ export default function AboutMe({ github }: AboutMeProps) {
           </li>
         )}
       </ul>
+      <div className="tech-badges">
+        <p>🛠️ 이런 연장들을 약간 다룰줄 압니다.</p>
+        {techStack.map((stack) => {
+          const language = stack.toLowerCase();
+          return (
+            <TechBadge language={language} displayText={stack} key={language} />
+          );
+        })}
+      </div>
     </div>
   );
 }
