@@ -38,7 +38,7 @@ jobs:
         with:
           changes: public
           repository: git@github.com:goonerholic/goonerholic.github.io.git
-          ssh_key: ${{ secrets.ACCESS_TOKEN }}
+          ssh_key: ${{ secrets.DEPLOY_KEY }}
           name: goonerholic
           email: goonerholic@gmail.com
 
