@@ -104,8 +104,8 @@ module.exports = {
         name: `보통인부`,
         short_name: `보통인부`,
         start_url: `/`,
-        background_color: `#3b5bdb`,
-        theme_color: `#3b5bdb`,
+        background_color: `#212529`,
+        theme_color: `#212529`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
