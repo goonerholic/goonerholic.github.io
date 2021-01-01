@@ -10,7 +10,13 @@ interface PostPreviewProps {
 }
 
 const style = css`
-  padding: 4rem 0;
+  --left-margin: calc((100vw - 100%) / 2);
+  width: 100vw;
+  position: relative;
+  margin-left: calc(var(--left-margin) * -1);
+  background-color: ${OpenColor.gray[1]};
+  padding: 2rem var(--left-margin);
+  margin-top: 2rem;
 
   .grid-container {
     display: grid;

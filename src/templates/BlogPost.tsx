@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import { PostQuery } from '../../gatsby-graphql';
 import { Post } from '../components/blog/PostList';
 import ContentWrapper from '../components/common/ContentWrapper';
-import Header from '../components/common/Header';
 import Layout from '../components/common/Layout';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -54,8 +53,7 @@ const style = css`
     code {
       background-color: ${OpenColor.indigo[1]};
       border-radius: 5px;
-      padding: 4px 1rem;
-      margin: 0 1rem;
+      padding: 4px 0.5rem;
     }
 
     table {
@@ -167,11 +165,10 @@ const components = {
 };
 
 export default function BlogPost({ data }: BlogPostProps) {
-  const { title, date, slug } = data.mdx?.frontmatter as Post;
+  const { title, date, slug, excerpt } = data.mdx?.frontmatter as Post;
   return (
     <Layout>
-      <Seo title={title} />
-      <Header />
+      <Seo title={title} description={excerpt} />
       <ContentWrapper width={800}>
         <section css={style}>
           <h1>{title}</h1>
@@ -182,6 +179,7 @@ export default function BlogPost({ data }: BlogPostProps) {
               <MDXRenderer>{data.mdx?.body as string}</MDXRenderer>
             </MDXProvider>
           </article>
+          <hr />
           <div className="comment">
             <Disqus
               config={{

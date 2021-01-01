@@ -2,6 +2,8 @@
 import { ReactNode } from 'react';
 import { jsx, css, Global } from '@emotion/react';
 import OpenColor from 'open-color';
+import Footer from './Footer';
+import Header from './Header';
 
 interface LayoutProps {
   children: ReactNode;
@@ -94,7 +96,13 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div>
       <Global styles={style} />
+      <Header />
       {children}
+      <Footer
+        github="https://github.com/goonerholic"
+        email="goonerholic@gmail.com"
+        linkedIn="https://www.linkedin.com/in/taehwa-yoon-a88253102/"
+      />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import Layout from '../components/common/Layout';
-import Header from '../components/common/Header';
 import ContentWrapper from '../components/common/ContentWrapper';
 import AboutPreview from '../components/home/AboutPreview';
 import PostPreview from '../components/home/PostPreview';
@@ -18,7 +17,6 @@ export default function index({ data }: Props): ReactElement {
   return (
     <Layout>
       <Seo title="Home" />
-      <Header />
       <ContentWrapper>
         <AboutPreview img={mainImage}>
           <AboutMe github="https://github.com/goonerholic" />
