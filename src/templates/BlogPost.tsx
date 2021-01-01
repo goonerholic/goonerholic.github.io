@@ -12,6 +12,7 @@ import Code from '../components/common/Code';
 import { preToCodeBlock } from 'mdx-utils';
 import Seo from '../components/common/Seo';
 import OpenColor from 'open-color';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 interface BlogPostProps {
   data: PostQuery;
@@ -166,22 +167,31 @@ const components = {
 };
 
 export default function BlogPost({ data }: BlogPostProps) {
-  const { title, date } = data.mdx?.frontmatter as Post;
+  const { title, date, slug } = data.mdx?.frontmatter as Post;
   return (
     <Layout>
       <Seo title={title} />
       <Header />
       <ContentWrapper width={800}>
-        <div css={style}>
+        <section css={style}>
           <h1>{title}</h1>
           <span className="date">{new Date(date).toLocaleDateString()}</span>
           <hr />
-          <div className="post-body">
+          <article className="post-body">
             <MDXProvider components={components}>
               <MDXRenderer>{data.mdx?.body as string}</MDXRenderer>
             </MDXProvider>
+          </article>
+          <div className="comment">
+            <Disqus
+              config={{
+                url: `https://goonerholic.github.io/${slug}`,
+                identifier: slug,
+                title,
+              }}
+            />
           </div>
-        </div>
+        </section>
       </ContentWrapper>
     </Layout>
   );
