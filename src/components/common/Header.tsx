@@ -154,13 +154,13 @@ export default function Header() {
           </button>
           <ul className={`header-nav-list${visible ? ' active' : ''}`}>
             <li className="header-nav-list-item">
-              <Link to={'/'}>Home</Link>
+              <Link to={'/'}>홈</Link>
             </li>
             {/* <li className="header-nav-list-item">
               <Link to={'/about'}>About</Link>
             </li> */}
             <li className="header-nav-list-item">
-              <Link to={'/posts'}>Posts</Link>
+              <Link to={'/posts'}>포스트</Link>
             </li>
           </ul>
         </nav>

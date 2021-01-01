@@ -30,10 +30,10 @@ const style = css`
 export default function PostPreview({ posts }: PostPreviewProps) {
   return (
     <section css={style}>
-      <h2>Recent Posts</h2>
+      <h2>최신 포스트</h2>
       <PostList posts={posts} />
       <div className="align-right">
-        <Link to="/posts">See more posts</Link>
+        <Link to="/posts">더 많은 포스트 보기</Link>
       </div>
     </section>
   );
