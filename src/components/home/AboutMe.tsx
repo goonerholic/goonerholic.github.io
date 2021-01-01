@@ -19,8 +19,9 @@ const techStack = [
 ];
 
 const style = css`
-  .tech-badges {
-    padding: 2rem 0;
+  h3 {
+    padding: 0;
+    margin-top: 1rem;
   }
 
   ul {

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { ReactNode } from 'react';
 import { jsx, css, Global } from '@emotion/react';
+import OpenColor from 'open-color';
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,6 +16,16 @@ const style = css`
 
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-top: 3rem;
   }
 
   h1 {
@@ -48,6 +59,7 @@ const style = css`
   p {
     font-size: 1.6rem;
     font-weight: 200;
+    margin: 1rem 0;
   }
 
   a {
@@ -64,6 +76,11 @@ const style = css`
   .icon {
     width: 1.6rem;
     height: 1.6rem;
+  }
+
+  hr {
+    border: 1px solid ${OpenColor.gray[4]};
+    margin: 1rem 0;
   }
 
   @media only screen and (max-width: 425px) {

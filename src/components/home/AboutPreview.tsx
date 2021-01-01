@@ -31,11 +31,11 @@ const style = css`
 
 export default function AboutPreview({ img, children }: AboutPreviewProps) {
   return (
-    <div css={style}>
+    <section css={style}>
       <div className="container grid-container">
         <img className="main-image" src={img} />
         <div className="description">{children}</div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -12,20 +12,25 @@ interface PostListItemProps {
 }
 
 const style = css`
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   backface-visibility: hidden;
   background-color: #ffffff;
 
+  .title {
+    margin-top: 0;
+  }
+
+  .excerpt {
+    overflow: hidden;
+    min-height: 6rem;
+  }
+
   img {
     width: 100%;
     height: 200px;
-    z-index: -100;
-    border-radius: 0.5rem 0.5rem 0 0;
-    padding: 0.5rem;
     object-fit: cover;
-    border: 1px solid ${OpenColor.gray[3]};
+    border: none;
   }
 
   div {
@@ -34,6 +39,7 @@ const style = css`
 
   &:hover {
     transform: translateY(-0.4rem);
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -48,9 +54,11 @@ export default function PostListItem({
       <img src={image ? image : placeholder} />
       <div>
         <Link to={`/${slug}`}>
-          <h4>{title}</h4>
+          <h4 className="title">{title}</h4>
         </Link>
-        <p>{excerpt.substring(0, 20)}</p>
+        <p className="excerpt">
+          {excerpt.length > 20 ? `${excerpt.substring(0, 20)}...` : excerpt}
+        </p>
       </div>
     </div>
   );

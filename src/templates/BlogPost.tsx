@@ -29,11 +29,11 @@ const style = css`
   }
 
   .post-body {
-    padding: 4rem 0;
+    padding: 2rem 0;
 
     p {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: 350;
       line-height: 1.6;
     }
 
@@ -48,6 +48,13 @@ const style = css`
         word-break: break-all;
         white-space: normal;
       }
+    }
+
+    code {
+      background-color: ${OpenColor.indigo[1]};
+      border-radius: 5px;
+      padding: 4px 1rem;
+      margin: 0 1rem;
     }
 
     table {
@@ -167,7 +174,8 @@ export default function BlogPost({ data }: BlogPostProps) {
       <ContentWrapper width={800}>
         <div css={style}>
           <h1>{title}</h1>
-          <span className="date">{new Date(date).toLocaleString()}</span>
+          <span className="date">{new Date(date).toLocaleDateString()}</span>
+          <hr />
           <div className="post-body">
             <MDXProvider components={components}>
               <MDXRenderer>{data.mdx?.body as string}</MDXRenderer>

@@ -29,12 +29,12 @@ const style = css`
 
 export default function PostPreview({ posts }: PostPreviewProps) {
   return (
-    <div css={style}>
+    <section css={style}>
       <h2>Recent Posts</h2>
       <PostList posts={posts} />
       <div className="align-right">
         <Link to="/posts">See more posts</Link>
       </div>
-    </div>
+    </section>
   );
 }
