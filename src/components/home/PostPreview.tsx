@@ -2,22 +2,14 @@
 import { jsx, css } from '@emotion/react';
 import { Link } from 'gatsby';
 import OpenColor from 'open-color';
-import { PostPreviewQuery } from '../../../gatsby-graphql';
+import { MainPageQuery } from '../../../gatsby-graphql';
 import PostList from '../blog/PostList';
 
 interface PostPreviewProps {
-  posts: PostPreviewQuery;
+  posts: MainPageQuery['postList'];
 }
 
 const style = css`
-  --left-margin: calc((100vw - 100%) / 2);
-  width: 100vw;
-  position: relative;
-  margin-left: calc(var(--left-margin) * -1);
-  background-color: ${OpenColor.gray[1]};
-  padding: 2rem var(--left-margin);
-  margin-top: 2rem;
-
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

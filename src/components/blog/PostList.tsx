@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
-import { PostListQuery } from '../../../gatsby-graphql';
+import { MainPageQuery } from '../../../gatsby-graphql';
 import PostListItem from './PostListItem';
 
 export interface Post {
@@ -12,7 +12,7 @@ export interface Post {
 }
 
 interface PostListProps {
-  posts: PostListQuery;
+  posts: MainPageQuery['postList'];
 }
 
 const style = css`
@@ -25,7 +25,7 @@ const style = css`
 export default function PostList({ posts }: PostListProps) {
   return (
     <div css={style}>
-      {posts.allMdx.edges.map(({ node }) => {
+      {posts.edges.map(({ node }) => {
         const { title, excerpt, image, slug } = node.frontmatter as Post;
         return (
           <PostListItem

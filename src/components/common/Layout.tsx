@@ -10,8 +10,6 @@ interface LayoutProps {
 }
 
 const style = css`
-  /* @import '../../../language-tabs.css'; */
-
   html {
     font-size: 10px;
   }
@@ -22,12 +20,21 @@ const style = css`
     padding: 0;
   }
 
+  .body {
+    padding-top: 5.9rem;
+    min-height: calc(100vh - 10rem);
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5 {
     margin-top: 3rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
 
   h1 {
@@ -97,7 +104,7 @@ export default function Layout({ children }: LayoutProps) {
     <div>
       <Global styles={style} />
       <Header />
-      {children}
+      <div className="body">{children}</div>
       <Footer
         github="https://github.com/goonerholic"
         email="goonerholic@gmail.com"

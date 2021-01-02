@@ -24,7 +24,7 @@ export default function PostListPage({ data }: PostListProps) {
     <Layout>
       <Seo title="Posts" />
       <ContentWrapper>
-        <PostList posts={data} />
+        <PostList posts={data.allMdx} />
       </ContentWrapper>
     </Layout>
   );

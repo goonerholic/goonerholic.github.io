@@ -8,8 +8,7 @@ interface ContentWrapperProps {
 }
 
 const style = (width: number) => css`
-  min-height: calc(100vh - 95px);
-  padding: 10rem 1rem 4rem 1rem;
+  padding: 4rem 1rem;
   max-width: ${width}px;
   margin: 0 auto;
 `;

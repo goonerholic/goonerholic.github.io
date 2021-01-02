@@ -21,7 +21,6 @@ const techStack = [
 const style = css`
   h3 {
     padding: 0;
-    margin-top: 1rem;
   }
 
   ul {
