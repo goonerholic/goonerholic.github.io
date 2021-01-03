@@ -26,12 +26,13 @@ export default function PostList({ posts }: PostListProps) {
   return (
     <div css={style}>
       {posts.edges.map(({ node }) => {
-        const { title, excerpt, image, slug } = node.frontmatter as Post;
+        const { title, image, slug } = node.frontmatter as Post;
+        const { excerpt } = node;
         return (
           <PostListItem
             key={title}
             title={title}
-            excerpt={excerpt.substring(0, 20)}
+            excerpt={excerpt}
             image={image}
             slug={slug}
           />

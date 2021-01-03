@@ -49,11 +49,11 @@ export const postPreview = graphql`
     ) {
       edges {
         node {
+          excerpt
           frontmatter {
             date
             title
             slug
-            excerpt
           }
         }
       }

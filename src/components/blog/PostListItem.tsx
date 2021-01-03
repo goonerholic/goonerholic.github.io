@@ -19,11 +19,13 @@ const style = css`
 
   .title {
     margin-top: 0;
+    font-size: 1.8rem;
   }
 
   .excerpt {
     overflow: hidden;
     min-height: 6rem;
+    font-size: 1.4rem;
   }
 
   img {
@@ -51,15 +53,15 @@ export default function PostListItem({
 }: PostListItemProps) {
   return (
     <div css={style}>
-      <img src={image ? image : placeholder} />
-      <div>
-        <Link to={`/${slug}`}>
+      <Link to={`/${slug}`}>
+        <img src={image ? image : placeholder} />
+        <div>
           <h4 className="title">{title}</h4>
-        </Link>
-        <p className="excerpt">
-          {excerpt.length > 20 ? `${excerpt.substring(0, 20)}...` : excerpt}
-        </p>
-      </div>
+          <p className="excerpt">
+            {excerpt.length > 20 ? `${excerpt.substring(0, 20)}...` : excerpt}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }
