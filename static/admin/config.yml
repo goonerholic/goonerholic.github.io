@@ -1,6 +1,6 @@
 backend:
   name: cms
-  repo: goonerholic/gatsby-blog
+  repo: goonerholic/goonerholic.github.io
   branch: master
   site_domain: goonerholic.github.io
 
