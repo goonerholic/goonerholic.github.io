@@ -1,5 +1,5 @@
 backend:
-  name: cms
+  name: github
   repo: goonerholic/goonerholic.github.io
   branch: master
   site_domain: goonerholic.github.io
