@@ -1,0 +1,21 @@
+backend:
+  name: cms
+  repo: goonerholic/gatsby-blog
+  branch: master
+  site_domain: goonerholic.github.io
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: blog
+    create: true
+    fields:
+      - { name: title, label: Title }
+      - { name: slug, label: Slug }
+      - { name: date, label: Date, widget: datetime }
+      - { name: tag, label: Tag }
+      - { name: excerpt, label: Excerpt }
+      - { name: body, label: Body, widget: markdown }
