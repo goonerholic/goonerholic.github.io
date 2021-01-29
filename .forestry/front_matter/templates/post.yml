@@ -37,3 +37,12 @@ fields:
     schema:
       format: markdown
   label: Excerpt
+- name: body
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Body
