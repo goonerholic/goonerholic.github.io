@@ -31,6 +31,10 @@ const style = css`
   .post-body {
     padding: 2rem 0;
 
+    a {
+      color: ${OpenColor.blue[9]};
+    }
+
     p {
       font-size: 1.8rem;
       font-weight: 350;

@@ -32,9 +32,9 @@ const style = css`
   h5 {
     margin-top: 3rem;
 
-    &:first-of-type {
+    /* &:first-of-type {
       margin-top: 0;
-    }
+    } */
   }
 
   h1 {
@@ -77,9 +77,22 @@ const style = css`
     color: inherit;
   }
 
+  ol,
+  ul {
+    padding-left: 2rem;
+  }
+
   ul {
     list-style: none;
     font-size: 1.6rem;
+  }
+
+  ol {
+    font-size: 1.6rem;
+  }
+
+  li {
+    padding: 0.5rem 0;
   }
 
   .icon {
