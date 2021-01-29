@@ -1,4 +1,39 @@
 ---
 label: Post
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+  description: Post's title
+- name: slug
+  type: text
+  config:
+    required: false
+  label: Slug
+  description: used as post url
+- name: date
+  type: datetime
+  description: post date
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+  label: Date
+- name: tag
+  type: tag_list
+  default: []
+  label: tag
+  description: tag
+- name: excerpt
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Excerpt
