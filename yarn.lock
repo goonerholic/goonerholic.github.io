@@ -8318,6 +8318,14 @@ gatsby-plugin-google-fonts-v2@^0.0.6:
     gatsby-plugin-ts "^2.7.0"
     ts-jest "^25.3.1"
 
+gatsby-plugin-google-gtag@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-gtag/-/gatsby-plugin-google-gtag-2.7.0.tgz#322f1d7cdefa4e9c45a77ad70e569685369944d4"
+  integrity sha512-9BvJRlHHknQaoOsPiZQJrZ3IuBP1iuj701kFIYzUQV0BA/3sDDEn2MeiAsyjguhR8+bJ6bYZZXHjX/UAEhD8Lw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    minimatch "^3.0.4"
+
 gatsby-plugin-graphql-codegen@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-graphql-codegen/-/gatsby-plugin-graphql-codegen-2.7.1.tgz#60683ef5508bc7e23c8e288f6d320b3f2b7f5d00"
