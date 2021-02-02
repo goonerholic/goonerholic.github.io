@@ -29,7 +29,6 @@ export default function PostList({ posts }: PostListProps) {
       {posts.edges.map(({ node }) => {
         const { title, image, slug } = node.frontmatter as Post;
         const { excerpt } = node;
-        console.log(image);
         return (
           <PostListItem
             key={title}
