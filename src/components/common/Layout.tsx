@@ -18,6 +18,7 @@ const style = css`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    word-break: keep-all;
   }
 
   .body {
