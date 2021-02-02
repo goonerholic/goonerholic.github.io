@@ -6,7 +6,7 @@ tag:
 - presignedUrl
 title: Presinged Url을 활용한 S3 업로드/다운로드
 slug: s3-presigned-url
-date: 2021-01-28T15:00:00Z
+date: 2021-01-28T15:00:00.000+00:00
 excerpt: Presigned url을 이용해서 S3에 파일을 업로드/다운로드 해보자
 
 ---
@@ -92,7 +92,7 @@ export async function forwardMail(event) {
   const Bucket = event.Records[0].s3.bucket.name;
   const rawKey = event.Records[0].s3.object.key;
   const Key = decodeURIComponent(rawKey.replace(/\+/g, " "));
-  cont object = await s3.getObject({ Bucket, Key }).promise();    
+  const object = await s3.getObject({ Bucket, Key }).promise();    
   
   const { author, title } = object.Metadata;
 }
