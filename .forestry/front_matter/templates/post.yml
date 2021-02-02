@@ -43,4 +43,5 @@ fields:
     maxSize: 64
   label: Image
 pages:
+- src/posts/github-actions-gatsby.mdx
 - src/posts/presinged-url-s3.mdx
