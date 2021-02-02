@@ -23,6 +23,7 @@ const style = css`
   .body {
     padding-top: 5.9rem;
     min-height: calc(100vh - 10rem);
+    font-family: -apple-system, Roboto, 'Noto Sans KR';
   }
 
   h1,
