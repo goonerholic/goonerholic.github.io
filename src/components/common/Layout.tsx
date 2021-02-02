@@ -77,11 +77,6 @@ const style = css`
     color: inherit;
   }
 
-  ol,
-  ul {
-    padding-left: 2rem;
-  }
-
   ul {
     list-style: none;
     font-size: 1.6rem;

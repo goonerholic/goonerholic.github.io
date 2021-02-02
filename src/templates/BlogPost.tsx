@@ -32,6 +32,7 @@ const style = css`
     padding: 2rem 0;
 
     a {
+      font-weight: bold;
       color: ${OpenColor.blue[9]};
     }
 
@@ -39,6 +40,15 @@ const style = css`
       font-size: 1.8rem;
       font-weight: 350;
       line-height: 1.6;
+    }
+
+    ul {
+      list-style: circle;
+    }
+
+    ol,
+    ul {
+      padding-left: 2rem;
     }
 
     blockquote {
