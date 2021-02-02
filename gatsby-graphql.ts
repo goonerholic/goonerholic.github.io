@@ -708,10 +708,46 @@ export type FileFieldsEnum =
   | 'childMdx___rawBody'
   | 'childMdx___fileAbsolutePath'
   | 'childMdx___frontmatter___title'
-  | 'childMdx___frontmatter___tag'
   | 'childMdx___frontmatter___slug'
   | 'childMdx___frontmatter___date'
+  | 'childMdx___frontmatter___tag'
   | 'childMdx___frontmatter___excerpt'
+  | 'childMdx___frontmatter___image___sourceInstanceName'
+  | 'childMdx___frontmatter___image___absolutePath'
+  | 'childMdx___frontmatter___image___relativePath'
+  | 'childMdx___frontmatter___image___extension'
+  | 'childMdx___frontmatter___image___size'
+  | 'childMdx___frontmatter___image___prettySize'
+  | 'childMdx___frontmatter___image___modifiedTime'
+  | 'childMdx___frontmatter___image___accessTime'
+  | 'childMdx___frontmatter___image___changeTime'
+  | 'childMdx___frontmatter___image___birthTime'
+  | 'childMdx___frontmatter___image___root'
+  | 'childMdx___frontmatter___image___dir'
+  | 'childMdx___frontmatter___image___base'
+  | 'childMdx___frontmatter___image___ext'
+  | 'childMdx___frontmatter___image___name'
+  | 'childMdx___frontmatter___image___relativeDirectory'
+  | 'childMdx___frontmatter___image___dev'
+  | 'childMdx___frontmatter___image___mode'
+  | 'childMdx___frontmatter___image___nlink'
+  | 'childMdx___frontmatter___image___uid'
+  | 'childMdx___frontmatter___image___gid'
+  | 'childMdx___frontmatter___image___rdev'
+  | 'childMdx___frontmatter___image___ino'
+  | 'childMdx___frontmatter___image___atimeMs'
+  | 'childMdx___frontmatter___image___mtimeMs'
+  | 'childMdx___frontmatter___image___ctimeMs'
+  | 'childMdx___frontmatter___image___atime'
+  | 'childMdx___frontmatter___image___mtime'
+  | 'childMdx___frontmatter___image___ctime'
+  | 'childMdx___frontmatter___image___birthtime'
+  | 'childMdx___frontmatter___image___birthtimeMs'
+  | 'childMdx___frontmatter___image___blksize'
+  | 'childMdx___frontmatter___image___blocks'
+  | 'childMdx___frontmatter___image___publicURL'
+  | 'childMdx___frontmatter___image___id'
+  | 'childMdx___frontmatter___image___children'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -1487,10 +1523,73 @@ export type MdxFieldsEnum =
   | 'rawBody'
   | 'fileAbsolutePath'
   | 'frontmatter___title'
-  | 'frontmatter___tag'
   | 'frontmatter___slug'
   | 'frontmatter___date'
+  | 'frontmatter___tag'
   | 'frontmatter___excerpt'
+  | 'frontmatter___image___sourceInstanceName'
+  | 'frontmatter___image___absolutePath'
+  | 'frontmatter___image___relativePath'
+  | 'frontmatter___image___extension'
+  | 'frontmatter___image___size'
+  | 'frontmatter___image___prettySize'
+  | 'frontmatter___image___modifiedTime'
+  | 'frontmatter___image___accessTime'
+  | 'frontmatter___image___changeTime'
+  | 'frontmatter___image___birthTime'
+  | 'frontmatter___image___root'
+  | 'frontmatter___image___dir'
+  | 'frontmatter___image___base'
+  | 'frontmatter___image___ext'
+  | 'frontmatter___image___name'
+  | 'frontmatter___image___relativeDirectory'
+  | 'frontmatter___image___dev'
+  | 'frontmatter___image___mode'
+  | 'frontmatter___image___nlink'
+  | 'frontmatter___image___uid'
+  | 'frontmatter___image___gid'
+  | 'frontmatter___image___rdev'
+  | 'frontmatter___image___ino'
+  | 'frontmatter___image___atimeMs'
+  | 'frontmatter___image___mtimeMs'
+  | 'frontmatter___image___ctimeMs'
+  | 'frontmatter___image___atime'
+  | 'frontmatter___image___mtime'
+  | 'frontmatter___image___ctime'
+  | 'frontmatter___image___birthtime'
+  | 'frontmatter___image___birthtimeMs'
+  | 'frontmatter___image___blksize'
+  | 'frontmatter___image___blocks'
+  | 'frontmatter___image___publicURL'
+  | 'frontmatter___image___childImageSharp___gatsbyImageData'
+  | 'frontmatter___image___childImageSharp___id'
+  | 'frontmatter___image___childImageSharp___children'
+  | 'frontmatter___image___id'
+  | 'frontmatter___image___parent___id'
+  | 'frontmatter___image___parent___children'
+  | 'frontmatter___image___children'
+  | 'frontmatter___image___children___id'
+  | 'frontmatter___image___children___children'
+  | 'frontmatter___image___internal___content'
+  | 'frontmatter___image___internal___contentDigest'
+  | 'frontmatter___image___internal___description'
+  | 'frontmatter___image___internal___fieldOwners'
+  | 'frontmatter___image___internal___ignoreType'
+  | 'frontmatter___image___internal___mediaType'
+  | 'frontmatter___image___internal___owner'
+  | 'frontmatter___image___internal___type'
+  | 'frontmatter___image___childMdx___rawBody'
+  | 'frontmatter___image___childMdx___fileAbsolutePath'
+  | 'frontmatter___image___childMdx___slug'
+  | 'frontmatter___image___childMdx___body'
+  | 'frontmatter___image___childMdx___excerpt'
+  | 'frontmatter___image___childMdx___headings'
+  | 'frontmatter___image___childMdx___html'
+  | 'frontmatter___image___childMdx___mdxAST'
+  | 'frontmatter___image___childMdx___tableOfContents'
+  | 'frontmatter___image___childMdx___timeToRead'
+  | 'frontmatter___image___childMdx___id'
+  | 'frontmatter___image___childMdx___children'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -1612,10 +1711,11 @@ export type MdxFilterInput = {
 
 export type MdxFrontmatter = {
   title: Scalars['String'];
-  tag?: Maybe<Array<Maybe<Scalars['String']>>>;
   slug?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
+  tag?: Maybe<Array<Maybe<Scalars['String']>>>;
   excerpt?: Maybe<Scalars['String']>;
+  image?: Maybe<File>;
 };
 
 
@@ -1628,10 +1728,11 @@ export type MdxFrontmatterDateArgs = {
 
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
-  tag?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
+  image?: Maybe<FileFilterInput>;
 };
 
 export type MdxGroupConnection = {
@@ -1854,6 +1955,8 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -1992,6 +2095,8 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
+  polyfill?: Maybe<Scalars['Boolean']>;
+  pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -2195,6 +2300,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'port'
   | 'host'
+  | 'polyfill'
+  | 'pathPrefix'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2287,6 +2394,8 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3048,7 +3157,10 @@ export type MainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MainPageQuery = { mainImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, postList: { edges: Array<{ node: (
         Pick<Mdx, 'excerpt'>
-        & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'date' | 'title' | 'slug'>> }
+        & { frontmatter?: Maybe<(
+          Pick<MdxFrontmatter, 'date' | 'title' | 'slug'>
+          & { image?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+        )> }
       ) }> } };
 
 export type PostQueryVariables = Exact<{
@@ -3069,7 +3181,10 @@ export type PostListQueryVariables = Exact<{
 
 export type PostListQuery = { allMdx: { edges: Array<{ node: (
         Pick<Mdx, 'excerpt'>
-        & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'date' | 'title' | 'slug'>> }
+        & { frontmatter?: Maybe<(
+          Pick<MdxFrontmatter, 'date' | 'title' | 'slug'>
+          & { image?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+        )> }
       ) }> } };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

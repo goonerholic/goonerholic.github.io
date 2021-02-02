@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
 import { Link } from 'gatsby';
-import OpenColor from 'open-color';
+import Img, { FluidObject } from 'gatsby-image';
 import placeholder from '../../images/placeholder.png';
 
 interface PostListItemProps {
   title: string;
   excerpt: string;
-  image: string;
+  image: { childImageSharp: { fluid: FluidObject } };
   slug: string;
 }
 
@@ -28,7 +28,7 @@ const style = css`
     font-size: 1.4rem;
   }
 
-  img {
+  .image {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -54,12 +54,16 @@ export default function PostListItem({
   return (
     <div css={style}>
       <Link to={`/${slug}`}>
-        <img src={image ? image : placeholder} />
+        {image ? (
+          <Img className="image" fluid={image.childImageSharp.fluid} />
+        ) : (
+          <img className="image" src={placeholder} />
+        )}
+
+        {/* <img src={image ? image : placeholder} /> */}
         <div>
           <h4 className="title">{title}</h4>
-          <p className="excerpt">
-            {excerpt.length > 20 ? `${excerpt.substring(0, 20)}...` : excerpt}
-          </p>
+          <p className="excerpt">{excerpt}</p>
         </div>
       </Link>
     </div>

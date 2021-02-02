@@ -54,6 +54,13 @@ export const postPreview = graphql`
             date
             title
             slug
+            image {
+              childImageSharp {
+                fluid(maxHeight: 200) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

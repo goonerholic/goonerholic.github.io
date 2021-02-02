@@ -1,16 +1,16 @@
 ---
 tag:
-- gatsby.js
-- github actions
-- deploy
-- 배포
+  - gatsby.js
+  - github actions
+  - deploy
+  - 배포
 title: Github actions를 활용한 Gatsby 앱 배포 자동화
 slug: deploy-gatsby
 date: 2021-02-01T15:00:00Z
 excerpt: Github actions를 이용해 github-page에 Gatsby블로그를 배포해보자
-image: "/uploads/github-actions.png"
-
+image: '../images/github-actions.png'
 ---
+
 ### 나는 github pages를 이용하고 싶다!
 
 구글에 검색해서 나오는 대부분의 gatsby 튜토리얼 들은 netlify에 배포하는 케이스를 다루고 있었다. 아무래도 배포가 간단하고 netlify에서 제공하는 cms를 붙이기도 쉽다보니 많이들 활용하는것 같았다. 근데 나는 github.io 페이지가 갖고 싶어서 무작정 github page부터 찾아보기 시작했다.
@@ -27,7 +27,7 @@ gatsby build && gh-pages -d public -r [리파지토리 주소] -b [브랜치명]
 
 물론 그 전에 github에 pages 사용 설정을 해야하는데 그건 귀찮으니
 잘 정리된 블로그로 대체!
-[GitHub Pages를 이용한 무료 홈페이지 만들기](https://wepplication.github.io/programming/github-pages/#:\~:text=Github%20Pages%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0,%EC%84%A4%EC%A0%95%EC%9D%84%20%ED%95%98%EC%8B%A4%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.&text=%EA%B9%83%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%86%8C%EC%8A%A4%20%EC%84%A4%EC%A0%95%EC%9D%84,%EC%A0%95%EC%A0%81%20%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A5%BC%20%EC%83%9D%EC%84%B1%ED%95%A9%EB%8B%88%EB%8B%A4.)
+[GitHub Pages를 이용한 무료 홈페이지 만들기](https://wepplication.github.io/programming/github-pages/#:~:text=Github%20Pages%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0,%EC%84%A4%EC%A0%95%EC%9D%84%20%ED%95%98%EC%8B%A4%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.&text=%EA%B9%83%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%86%8C%EC%8A%A4%20%EC%84%A4%EC%A0%95%EC%9D%84,%EC%A0%95%EC%A0%81%20%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A5%BC%20%EC%83%9D%EC%84%B1%ED%95%A9%EB%8B%88%EB%8B%A4.)
 
 여기까지만 하면 사실 잘 배포되고 모두가 해피하지만 문제는 정적홈페이지라는 특성상 컨텐츠가 업데이트될 때마다 빌드해서 배포해줘야하는 귀찮음이 있다.
 
@@ -56,7 +56,7 @@ on:
       - master
     paths-ignore:
       - '**/README.md'
-      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -85,4 +85,3 @@ netlify를 먼저 고려했었는데 뭔가 netlify에 deploy되지 않은 앱�
 간단하게 리파지토리 연동해주고 블로그 포스트의 frontmatter들을 설정해주면 포스트 작성 시 알아서 해당 리파지토리에 md파일이 생성된다.
 
 이제 master에 md파일이 푸쉬되었으니 배포는 github action이 처리해줄 것이다.
-

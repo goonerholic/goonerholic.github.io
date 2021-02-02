@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { FluidObject } from 'gatsby-image';
 import { MainPageQuery } from '../../../gatsby-graphql';
 import PostListItem from './PostListItem';
 
@@ -7,7 +8,7 @@ export interface Post {
   title: string;
   date: string;
   excerpt: string;
-  image: string;
+  image: { childImageSharp: { fluid: FluidObject } };
   slug: string;
 }
 
@@ -28,6 +29,7 @@ export default function PostList({ posts }: PostListProps) {
       {posts.edges.map(({ node }) => {
         const { title, image, slug } = node.frontmatter as Post;
         const { excerpt } = node;
+        console.log(image);
         return (
           <PostListItem
             key={title}
