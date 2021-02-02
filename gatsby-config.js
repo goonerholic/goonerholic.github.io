@@ -3,6 +3,7 @@ module.exports = {
     title: `보통인부`,
     description: `보통인부 with frontend dev`,
     author: `보통인부`,
+    siteUrl: `goonerholic.github.io`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
