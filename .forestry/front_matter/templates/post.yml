@@ -44,4 +44,5 @@ fields:
   label: Image
 pages:
 - src/posts/github-actions-gatsby.mdx
+- src/posts/mit-6.006-intoduction-to-algorithms-lecture1-peak-finding.mdx
 - src/posts/presinged-url-s3.mdx
