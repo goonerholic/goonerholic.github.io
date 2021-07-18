@@ -41,7 +41,7 @@ image: "../images/6-006f11.jpg"
 
 * `left(i)` , `right(i)` 을 root로 하는 subtree들은 모두 max-heap이라 가정
 * `A[i]` 가 max-heap property를 위배하는 경우 `A[i]` 를 tree를 따라 내려가며 치환해가며 `i` 를 root로 하는 subtree를 max-heap으로 만든다.
-* 트리의 높이가 `logn` 이므로 `maxHeapify`의 시간복잡도는 `O(n)` .
+* 트리의 높이가 `logn` 이므로 `maxHeapify`의 시간복잡도는 `O(logn)` .
 
 ### buildMaxHeap(A)
 
