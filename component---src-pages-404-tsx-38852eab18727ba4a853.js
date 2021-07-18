@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{"i6+/":function(n,t,c){"use strict";c.r(t),c.d(t,"default",(function(){return a}));var e=c("AeFk"),u=c("w4+F"),o=c("+o6H"),l=c("x/Ws");function a(){return Object(e.c)(o.a,null,Object(e.c)(l.a,{title:"Not Found"}),Object(e.c)(u.a,null,Object(e.c)("h1",null,"Page not found!"),Object(e.c)("p",null,"찾으시는 페이지는 없네요...")))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-38852eab18727ba4a853.js.map

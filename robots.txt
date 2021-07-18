@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://goonerholic.github.io/sitemap.xml
+Host: https://goonerholic.github.io
