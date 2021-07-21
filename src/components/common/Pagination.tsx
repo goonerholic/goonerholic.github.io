@@ -51,7 +51,7 @@ export default function Pagination({
       <ul>
         <li>
           <Link
-            to={`/posts/${currentPage - 1}`}
+            to={`/posts/${currentPage - 1 === 1 ? '' : currentPage - 1}`}
             className={`post-nav-link prev${
               currentPage === 1 ? ' disabled' : ''
             }`}
