@@ -35,7 +35,6 @@ const style = css`
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: white;
-    padding: 30px;
     color: #333;
 
     & > *:first-child {
@@ -426,7 +425,7 @@ const style = css`
     tt {
       margin: 0 2px;
       padding: 0 5px;
-      white-space: nowrap;
+      white-space: pre-wrap;
       border: 1px solid #eaeaea;
       background-color: #f8f8f8;
       border-radius: 3px;
