@@ -48,4 +48,5 @@ pages:
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture3-insertion-sort-merge-sort.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture4-heaps-and-heap-sort.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture5-binary-search-trees-bst-sort.mdx
+- src/posts/nestjs-1.controllers.mdx
 - src/posts/presinged-url-s3.mdx
