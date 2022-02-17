@@ -1,0 +1,190 @@
+---
+tag:
+- express
+- nodejs
+- test
+- 테스트
+title: Express 유닛 테스트 작성하기
+slug: express-testing
+date: 2022-02-17T15:00:00Z
+excerpt: Express 백엔드의 유닛테스트 삽질기
+image: "../images/zojuy79lo3fn3qdt7g6p.png"
+
+---
+요즘은 Nest.js라는 강력한 node.js 백엔드 프레임워크의 등장으로 순수 express로만 백엔드를 구성하는 경우가 점점 줄어드는것 같다.
+
+그래도 지금 다니는 회사에서는 Nest.js 도입을 고려하고는 있지만 여전히 express기반 백엔드를 운영하고 있고 이 상태에서 조금더 좋은 구조를 갖추고 최소한의 테스트 코드를 작성하려고 삽질했던 기록을 남겨본다.
+
+### Controller에 대한 unit test
+
+전통적인 model, controller, service 구조를 기반으로 코드를 작성하는 중이다.
+
+우선 service 코드에 대한 테스트를 작성해보자. 아래와 같은 서비스 코드가 있다고 가정하자.
+
+\`\`\`typescript
+
+const getVariant: RequestHandler = async (req, res, next) => {
+
+  const { id } = req.params as { id: string };
+
+  const { pos } = req.query;
+
+  if (!id || !pos) {
+
+    res.status(400).send("Invalid request parameters");
+
+    return;
+
+  }
+
+  try {
+
+    const variant = await VariantService.getVariant({ id, pos });
+
+    res.json(variant);
+
+  } catch(e) {
+
+    // error handling
+
+  }
+
+}
+
+\`\`\`
+
+위 controller에 대한 unit test를 작성한다면 아래와 같이 할 수 있다.
+
+\`\`\`typescript
+
+describe("Variant Controller - getVariant", () => {
+
+  it("should invoke res.json with return value of 'VariantService.getVariant'", async () => {
+
+    const req: any = {
+
+      params: { id: "test-id" },
+
+      query: { pos: "test-position" }
+
+    };
+
+    const res: any = {
+
+      json: jest.fn()
+
+    }
+
+    const next = jest.fn();
+
+    
+
+    jest.spyOn(VariantService, "getVariant").mockResolvedValue(mockServiceReturnValue); // Service의 return 값을 mocking 해줌
+
+    await VariantController.getVariant(req, res, next);
+
+    expect(res.json).toHaveBeenCalledWith(mockServiceReturnValue);
+
+  })
+
+})
+
+\`\`\`
+
+먼저 express 컨트롤러의 인자들인 req, res object와 next함수를 mocking 해주었다. 실제 express의 `Request`, `Response` 객체를 완벽히 mocking하려면 불필요한 수많은 property들을 정의해주어야 하므로 단순히 any 처리를 해주었다.
+
+그 다음은 해당 컨트롤러가 이용하는 Service의 method들을 mocking해주었다. 이 때 `jest.fn()`의 `mockResolvedValue` method를 이용하면 promise에 대한 반환값을 mocking할 수 있다.
+
+마지막으로 해당 mocking된 value를 인자로 res.json 함수가 실행되었는지를 테스트한다.
+
+이것은 해당 request가 아무 문제없이 정상적으로 수행될 때에 대한 테스트이고 만약 잘못된 인자로 요청이 들어오는 경우 `res.status(400).send()` 가 실행됨을 테스트해야 한다.
+
+이 때 response 객체의 `status` 매서드와 `send` 매서드를 각각 mocking해주어야 하는데 status매서드는 자기자신을 리턴하여 chaining이 가능하게 하므로 jest.fn의 `mockReturnThis` 매서드를 이용하면 된다.
+
+### Service unit test
+
+서비스를 테스트하는 경우 DB layer를 mocking하고싶은 유혹에 빠지게 되는데 실제 데이터 access를 mocking해버린 service 테스트는 반쪽자리 테스트라고 생각한다.
+
+FM대로라면 로컬에 똑같은 DB를 설치하고 테스트를 수행하는게 맞겠지만 나는 테스트를 github action의 workflow내에서도 실행하고자 했기 때문에 aws의 사내 개발계정을 이용하기로 했다.
+
+현재 우리 회사에서는 dynamodb를 이용하고 있으므로 테스트 실행 전 aws credential를 설정하는 작업이 필요하다. dynamoose라는 orm을 이용하고 있는데 해당 라이브러리의 config를 이용해 aws sdk에 접근할 수 있다. 물론 직접 `aws-sdk` 패키지를 이용해 설정할 수도 있다.
+
+\`\`\`typescript
+
+import dynamoose from "dynamoose";
+
+const sdk = dynamoose.aws.sdk;
+
+export default function AWSInit(profile: "dev" | "prod" = "dev"): void {
+
+  sdk.config.update({
+
+    region: "ap-northeast-2"
+
+  });
+
+  const credentials = new sdk.SharedIniFileCredentials({ profile });
+
+}
+
+\`\`\`
+
+이렇게 작성해놓은 config 함수를 각 테스트 코드의 최상단에서 import해 실행해주면 된다. 중요한것은 dynamodb에 접근하는 서비스 모듈을 import하기 전에 실행을 해야 테스트 수행 시 정상작동한다.
+
+그렇다면 github action에서도 동작하게 하려면 어떻게 해야할까?
+
+는 이미 누가 만들어놓은 액션이 있다
+
+[https://github.com/aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials "aws-actions/configure-aws-credentials@v1") 
+
+workflow파일에 아래와 같이 설정하면 aws-cli의 명령어를 action에서 사용가능해진다.
+
+\`\`\`yaml
+
+* name: Configure AWS Credentials
+
+  uses: aws-actions/configure-aws-credentials@v1
+
+  with:
+
+    aws-access-key-id: ${{ secrets.XXXX }}
+
+    aws-secret-access-key: ${{ secrets.XXXX }}
+
+    aws-region: ap-northeast-2
+
+\`\`\`
+
+이렇게 작성한 후 다음 줄부터 aws-cli명령어를 직접 입력해서 credential profile을 생성해도 되고 원하는 aws 관련 작업을 수행할 수 있다. 당연히 `${{ secrets.XXX }}` 부분에는 리파지토리에 저장해놓은 secret 값이 들어가야 한다.
+
+### Endpoint에 대한 통합테스트
+
+개별 모듈이 아닌 endpoint에 대한 테스트는 [Supertest](https://github.com/visionmedia/supertest "Supertest") 라이브러리를 이용하면 편리하게 수행할 수 있다. 
+
+\`\`\`typescript
+
+describe("/variant/:id", () => {
+
+  it("\[GET\] - 200", done => {
+
+    jest.spyOn(VariantService, "getVariant").mockResolvedValue(somevalue);
+
+    request(app)
+
+      .get(`/variant/${id}?pos=${pos}`)
+
+      .expect(200)
+
+      .expect("Content-Type", /json/)
+
+      .expect(somevalue, done)
+
+  })
+
+})
+
+\`\`\`
+
+이 때 service는 그냥 모킹을 했는데 액션이 돌 때마다 테스트 시간이 오래걸려서 service자체에 대한 unit테스트가 있는데 굳이 또 여기서 해야할까 싶어서 이렇게 처리했다. 사실 뭐가 가장 좋은 접근방식인지는 잘 모르겠다.
+
+이렇게 하면 기본적인 controller, service 그리고 endpoint에 대한 테스트 코드 작성이 완료된다.

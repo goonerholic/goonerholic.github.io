@@ -43,6 +43,7 @@ fields:
     maxSize: 64
   label: Image
 pages:
+- src/posts/express.mdx
 - src/posts/github-actions-gatsby.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture1-peak-finding.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture3-insertion-sort-merge-sort.mdx
