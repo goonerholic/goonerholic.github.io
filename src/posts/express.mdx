@@ -24,31 +24,20 @@ image: "../images/zojuy79lo3fn3qdt7g6p.png"
 ```typescript
 
 const getVariant: RequestHandler = async (req, res, next) => {
-
   const { id } = req.params as { id: string };
-
   const { pos } = req.query;
 
   if (!id || !pos) {
-
     res.status(400).send("Invalid request parameters");
-
     return;
-
   }
 
   try {
-
     const variant = await VariantService.getVariant({ id, pos });
-
     res.json(variant);
-
   } catch(e) {
-
     // error handling
-
   }
-
 }
 
 ```
@@ -58,31 +47,20 @@ const getVariant: RequestHandler = async (req, res, next) => {
 ```typescript
 
 describe("Variant Controller - getVariant", () => {
-
   it("should invoke res.json with return value of 'VariantService.getVariant'", async () => {
-
     const req: any = {
-
       params: { id: "test-id" },
-
       query: { pos: "test-position" }
-
     };
 
     const res: any = {
-
       json: jest.fn()
-
     }
 
     const next = jest.fn();
 
-    
-
     jest.spyOn(VariantService, "getVariant").mockResolvedValue(mockServiceReturnValue); // Service의 return 값을 mocking 해줌
-
     await VariantController.getVariant(req, res, next);
-
     expect(res.json).toHaveBeenCalledWith(mockServiceReturnValue);
 
   })
@@ -116,15 +94,11 @@ import dynamoose from "dynamoose";
 const sdk = dynamoose.aws.sdk;
 
 export default function AWSInit(profile: "dev" | "prod" = "dev"): void {
-
   sdk.config.update({
-
     region: "ap-northeast-2"
-
   });
 
   const credentials = new sdk.SharedIniFileCredentials({ profile });
-
 }
 
 ```
@@ -140,19 +114,12 @@ export default function AWSInit(profile: "dev" | "prod" = "dev"): void {
 workflow파일에 아래와 같이 설정하면 aws-cli의 명령어를 action에서 사용가능해진다.
 
 ```yaml
-
 - name: Configure AWS Credentials
-
   uses: aws-actions/configure-aws-credentials@v1
-
   with:
-
     aws-access-key-id: ${{ secrets.XXXX }}
-
     aws-secret-access-key: ${{ secrets.XXXX }}
-
     aws-region: ap-northeast-2
-
 ```
 
 이렇게 작성한 후 다음 줄부터 aws-cli명령어를 직접 입력해서 credential profile을 생성해도 되고 원하는 aws 관련 작업을 수행할 수 있다. 당연히 `${{ secrets.XXX }}` 부분에는 리파지토리에 저장해놓은 secret 값이 들어가야 한다.
@@ -162,27 +129,16 @@ workflow파일에 아래와 같이 설정하면 aws-cli의 명령어를 action�
 개별 모듈이 아닌 endpoint에 대한 테스트는 [Supertest](https://github.com/visionmedia/supertest "Supertest") 라이브러리를 이용하면 편리하게 수행할 수 있다. 
 
 ```typescript
-
 describe("/variant/:id", () => {
-
   it("\[GET\] - 200", done => {
-
     jest.spyOn(VariantService, "getVariant").mockResolvedValue(somevalue);
-
     request(app)
-
       .get(`/variant/${id}?pos=${pos}`)
-
       .expect(200)
-
       .expect("Content-Type", /json/)
-
       .expect(somevalue, done)
-
   })
-
 })
-
 ```
 
 이 때 service는 그냥 모킹을 했는데 액션이 돌 때마다 테스트 시간이 오래걸려서 service자체에 대한 unit테스트가 있는데 굳이 또 여기서 해야할까 싶어서 이렇게 처리했다. 사실 뭐가 가장 좋은 접근방식인지는 잘 모르겠다.
