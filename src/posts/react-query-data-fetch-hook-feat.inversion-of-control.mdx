@@ -1,0 +1,70 @@
+---
+tag:
+- react-query
+title: React query로 재사용가능한 data fetch hook 만들기(feat. inversion of control)
+slug: react-query-reusable-hooks
+date: 2022-05-29T15:00:00Z
+excerpt: 캐시된 서버 state를 감싸는 재사용가능한 훅을 만들어 보자
+image: ''
+
+---
+react query를 이용해 서버데이터를 불러오는 경우 대부분 아래와 같은 custom hook을 만들어 사용하곤 한다.
+```typescript
+import { getUserList } from "@api";
+
+function useUserList() {
+  const { data, isLoading, error } = useQuery(["user"], getUserList);
+  
+  return { data, isLoading, error };
+}
+```
+
+이렇게 훅을 구성하면 여러 컴포넌트에서 해당 api 요청에 대한 결과를 cache하여 재사용할 수 있다.
+
+그런데 만약 반환된 결과를 클라이언트에서 원하는 형태로 가공해야 한다면 어떻게 해야 할까?
+
+먼저 아래와 같이 해당 훅 내부에서 데이터 가공 로직을 처리하는 방식을 생각해볼 수 있다.
+```typescript
+function useUserList() {
+  const { data, isLoading, error } = useQuery();
+  
+  const transformedData = transform(data) // 이렇게 저렇게 변형
+  
+  return {
+    data: transformedData,
+    isLoading,
+    error
+  }
+}
+```
+
+그런데 이와 같은 형태는 크게 두가지 문제점이 존재하는데 
+첫번째, 리모트 스키마를 임의의 형태로 변경하는 순간 해당 훅의 재사용 가능성은 급격히 낮아진다.
+만약 다른 컴포넌트에서는 이러한 변경이 불필요하거나, 아예 변경을 해서는 안된다면 결국 이 훅을 사용할 수 없다.
+
+두번째로 이 훅은 데이터의 fetch + 변형이라는 2가지 역할을 하고 있는데 관심사의 분리 측면에서도 굳이 묶어 둘 필요가 없다.
+
+그렇다면 다른 방법으로 해당 훅은 data fetch의 기능만 남겨두고 데이터의 가공은 사용하는 쪽에서 담당하도록 하는 방법이 있을 수 있다. 이렇게 해도 큰 문제는 없지만 더 좋은 방법은 react query 본연의 기능을 이용하는 것이다.
+
+`useQuery` 훅에는 여러가지 옵션을 줄 수 있는데 그 중 `select`라는 옵션을 사용하면 fetch된 데이터를 원하는 형태로 변형할 수 있다.
+```typescript
+const { data, isLoading, error } = useQuery(
+  ["user"], 
+  getUserList,
+  {
+    select: (userList) => transform(userList)
+  }
+)
+```
+
+이제 이 select 콜백 함수를 훅의 인자로 옵셔널하게 전달할 수 있게하면 redux의 useSelector를 활용해 store의 값을 원하는 형태로 가져오듯 훅을 사용할 수 있게 된다.
+
+```typescript
+function useUserList<T>(select?: (userList: User[]) => T[])) {
+  const { data, isLoading, error } = useQuery(["user"], getUserList, {
+    select
+  })
+  
+  //...
+}
+```
