@@ -45,6 +45,7 @@ fields:
 pages:
 - src/posts/express.mdx
 - src/posts/github-actions-gatsby.mdx
+- src/posts/github-actions-oidc-aws.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture1-peak-finding.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture3-insertion-sort-merge-sort.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture4-heaps-and-heap-sort.mdx
