@@ -51,5 +51,6 @@ pages:
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture4-heaps-and-heap-sort.mdx
 - src/posts/mit-6.006-intoduction-to-algorithms-lecture5-binary-search-trees-bst-sort.mdx
 - src/posts/nestjs-1.controllers.mdx
+- src/posts/nestjs-bundling.mdx
 - src/posts/presinged-url-s3.mdx
 - src/posts/react-query-data-fetch-hook-feat.inversion-of-control.mdx
