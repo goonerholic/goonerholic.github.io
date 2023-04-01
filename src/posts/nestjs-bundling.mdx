@@ -6,7 +6,7 @@ tag:
 - bundle
 title: Nestjs bundling 삽질 기록
 slug: nestjs-serverless-bundle
-date: 2023-03-30T15:00:00Z
+date: 2023-03-30T15:00:00.000+00:00
 excerpt: Serverless 환경에서 구동되는 Nestjs앱을 번들링하려면?
 image: "../images/2023-04-01-12-47-45.png"
 
@@ -30,6 +30,7 @@ image: "../images/2023-04-01-12-47-45.png"
 사실 기존 express로 작성된 서비스의 경우 serverless-bundle이란 플러그인을 이용하고 있었고 해당 플러그인은 자체적으로 serverless offline과 잘 연계가 되어 hmr기능을 이용해 개발을 할 수 있었다. 그럼에도 직접 webpack config를 건드릴 수 없고 웬만한 설정은 다 인터페이스를 열어뒀다고 하지만 한두개씩 뭔가 아쉬운게 있었던 차에 결국 nestjs를 적용한 새로운 api에는 `serverless-webpack`을 적용해 직접 webpack 설정을 하기로 결정했다.
 
 일단 외부 패키지들을 external로 빼지 않고 모두 번들에 포함시켜서 빌드하기로 했다.
+
 ```typescript
 const path = require('path');
 const slsw = require('serverless-webpack');
@@ -109,8 +110,8 @@ module.exports = {
   ],
   ignoreWarnings: [/^(?!CriticalDependenciesWarning$)/],
 };
-
 ```
+
 대충 위와 같은 설정으로 webpack config를 설정했다. serverless webpack을 이용하면 해당 라이브러리로 부터 import한 `slsw` 객체를 통해 entry, local여부 등을 확인할 수 있다. 그리고 nestjs swagger plugin을 적용하기 위해 ts-loader의 `getCustomTransformers` 옵션을 추가해주었다.([관련링크](https://docs.nestjs.com/openapi/cli-plugin))
 
 그리고 실제 프로젝트에서 사용되지 않음에도 빌드시 모듈을 찾을 수 없다고 에러를 뿜는 nest관련 패키지들을 lazy import하도록 설정을 추가해주었다.
@@ -141,6 +142,7 @@ class-transformer 라이브러리는 class의 속성에 decorator를 붙여주�
 내부를 확인해보면 class-transformer의 버전에 따라 `class-transformer/cjs/storage` 또는 `class-transformer/storage`와 같은 형태로 import를 하고 있다. 당연히 어플리케이션 코드 내에서는 `import { ... } from 'class-transformer'` 형태로 import를 하고 있으니 서로 다른 metadata storage를 갖게 되었던 것이다.
 
 결국 동일한 metadata storage를 유지하기 위해서 아래의 설정을 webpack config에 추가해야 했다.
+
 ```typescript
 (생략)
 resolve: {
@@ -168,6 +170,7 @@ resolve: {
 번들링을 하면서 마주치는 또하나의 문제는 바로 swagger-ui-dist 내부의 정적 html 파일들이다. 이 파일들이 번들에 포함되지 않아서 swagger doc을 열면 제대로 ui가 불러와지지 않는다.
 
 이건 `copy-webpack-plugin`을 이용해 해당 파일들을 번들이 위치한 곳에 옮겨두면 그만이다.
+
 ```typescript
 const CopyPlugin = require('copy-webpack-plugin');
 
