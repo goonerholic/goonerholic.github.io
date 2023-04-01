@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://goonerholic.github.io/posts</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/posts/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/posts/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/nestjs-serverless-bundle</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/github-actions-oidc</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/react-query-reusable-hooks</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/express-testing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/nestjs-firststep</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/bst</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/heaps</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/sort-algorithm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/peak-finding</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/deploy-gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/s3-presigned-url</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/todos-in-2020</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/things-to-do</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://goonerholic.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>
